@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Orders</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 30px 0 20px;
+      color: #333;
+    }
+
+    table {
+      width: 90%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      margin-top: 80px;
+    }
+
+    table th,
+    table td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    table tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+      font-size: 18px;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 6px 12px;
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c82333;
+    }
+
+    .active {
+      text-decoration: underline;
+      text-decoration-color: white;
+      text-decoration-thickness: 3px;
+    }
+
+    header {
+      background-color: #007bff;
+      padding: 10px;
+      color: white;
+    }
+
+    #menu-bar {
+      display: none;
+    }
+
+    .head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--clr1);
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.fa-heart {
+    color: red;
+}
+
+
+
+.head .navbar {
+    font-size: 1.8em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.head .navbar a {
+    color: var(--clr3);
+    margin-right: 15px;
+}
+
+.head .navbar a:hover {
+    text-decoration: underline;
+    text-decoration-color: white;
+    text-decoration-thickness: 3px;
+}
+
+.head .navbar input[type="search"] {
+    padding: 5px 12px;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    width: 300px;
+    margin-left: 60rem;
+}
+
+/* Hamburger menu button */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .head {
+        padding: 1.5rem 5%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .head .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        display: none;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .head .navbar.show {
+        display: flex;
+    }
+
+    .head .navbar input[type="search"] {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .menu-icon {
+        display: flex;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+    }
+}
+    #searchBox {
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      table {
+        font-size: 14px;
+      }
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead tr {
+        display: none;
+      }
+
+      tbody tr {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        background: white;
+      }
+
+      tbody td {
+        text-align: left;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+      }
+
+      tbody td::before {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #007bff;
+      }
+
+      tbody td:nth-child(1)::before { content: "Item Name"; }
+      tbody td:nth-child(2)::before { content: "Price"; }
+      tbody td:nth-child(3)::before { content: "Quantity"; }
+      tbody td:nth-child(4)::before { content: "Total"; }
+      tbody td:nth-child(5)::before { content: "Payment"; }
+      tbody td:nth-child(6)::before { content: "Delivery Address"; }
+      tbody td:nth-child(7)::before { content: "Date"; }
+      tbody td:nth-child(8)::before { content: "Cancellation"; }
+
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="head">
+    <div id="menu-bar"><i class="fas fa-bars"></i></div>
+    <nav class="navbar" id="navbar">
+      <a href="/index">Home</a>
+      <a href="/index#service">Food_Items</a>
+      <a href="#" class="active">My_Orders</a>
+      <a href="/index#contact">Contact</a>
+      <a href="/Logout">Logout</a>
+      <a href="/index#search"><input type="search" id="searchBox" placeholder="search here..."></a>
+    </nav>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Payment</th>
+        <th>Delivery Address</th>
+        <th>Date</th>
+        <th>Cancellation</th>
+      </tr>
+    </thead>
+    <tbody id="ordersBody">
+      <!-- Orders will be loaded dynamically here -->
+    </tbody>
+  </table>
+
+  <script>
+    async function loadOrders() {
+      const res = await fetch('/api/orders');
+      const data = await res.json();
+
+      const tbody = document.getElementById('ordersBody');
+      tbody.innerHTML = '';
+
+      if (!data.length) {
+        tbody.innerHTML = '<tr><td colspan="8">No orders found.</td></tr>';
+        return;
+      }
+
+      data.forEach(order => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${order.itemName}</td>
+          <td>₹${order.price}</td>
+          <td>${order.quantity}</td>
+          <td>₹${order.totalAmount}</td>
+          <td>${order.paymentType}</td>
+          <td>${order.delivery_Address}</td>
+          <td>${new Date(order.createdAt).toLocaleString()}</td>
+          <td><button onclick="cancelOrder('${order._id}')">Cancel</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+ async function cancelOrder(orderId) {
+  const confirmCancel = confirm("Are you sure to remove this item?");
+  
+  if (!confirmCancel) return; // User clicked "No"
+
+  try {
+    const response = await fetch(`/cancel-order/${orderId}`, {
+      method: 'DELETE',
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert(result.message);
+      window.location.reload(); // Refresh to reflect cancellation
+    } else {
+      alert(result.message || 'Failed to cancel the order');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Server error while canceling the order');
+  }
+}
+
+    window.onload = loadOrders;
+  </script>
+
+</body>
+</html>

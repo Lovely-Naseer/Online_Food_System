@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Hub</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+  <header class="head">
+    <!-- Single hamburger icon -->
+    <div id="menu-bar">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Navigation menu -->
+    <nav class="navbar" id="navbar">
+      <a href="#" class="active">Home</a>
+      <a href="#service">Food_Items</a>
+      <a href="#contact">Contact</a>
+      <a href="/login">Login</a>
+      <a href="/signup">Signup</a>
+
+      <a href="#search">
+        <input type="search" id="searchBox" placeholder="search here...">
+      </a>
+    </nav>
+  </header>
+
+  <script>
+    // Single toggle handler
+    document.getElementById('menu-bar').addEventListener('click', function () {
+      document.getElementById('navbar').classList.toggle('show');
+    });
+  </script>
+    <!--Home-->
+    <section class="home" id="home" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('/images/bikel.webp'); background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;">
+
+        <form action="/home">
+            <div class="search-box" >
+                <h1><span>Tasty</span>Track</h1>
+                <p>Crave It. Click It. Eat It.</p>
+                <button class="btn"><a href = "/login">Order Now</a></button>
+                
+        </form>
+    </section>
+    <div id="searchResults" style="padding: 20px; display: none;">
+        <h2>Search Results:</h2>
+        <div id="resultItems" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
+    </div>
+
+<script>
+document.getElementById("searchBox").addEventListener("input", function () {
+    const searchValue = this.value.trim();
+
+    if (searchValue.length > 0) {
+        document.getElementById("searchResults").style.display = "block";
+        document.getElementById("searchResults").scrollIntoView({ behavior: "smooth" });
+    }
+    if (searchValue.length == 0) {
+        document.getElementById("home").style.display = "block";
+        document.getElementById("home").scrollIntoView({ behavior: "smooth" });
+    }
+});
+</script>
+
+    <section class="service" id="service">
+        <div class="title">
+            <h1><span>Food</span>Items</h1>
+        </div>
+        <div class="services-row">
+            <div class="services-col" style="background-image:url('/images/vegphoto.jpeg');" onclick="openModal('vegModal')">
+                <i class="fas fa-carrot"></i>
+                <h2>Veg Items</h2>
+            </div>
+    
+            <div class="services-col" style="background-image:url('/images/Chicken Biryani.jpg');" onclick="openModal('nonVegModal')">
+                <i class="fas fa-drumstick-bite"></i>
+                <h2>Non-Veg Items</h2>
+            </div>
+    
+            <div class="services-col" style="background-image:url('/images/noodles.jpg');" onclick="openModal('chineseModal')">
+                <i class="fas fa-bowl-food"></i>
+                <h2>Chinese Items</h2>
+            </div>
+            <div class="services-col" style="background-image:url('/images/cool/Badam Milk.jpeg');" onclick="openModal('coolModal')">
+                <i class="fas fa-glass-martini-alt"></i>
+                <h2>Cool Drinks</h2>
+            </div>
+            <div class="services-col" style="background-image:url('/images/ice1.jpg');" onclick="openModal('icecreamModal')">
+                <i class="fas fa-ice-cream"></i>
+                <h2>ice creams</h2>
+            </div>
+        </div>
+    
+        <!-- Modal for Veg Items -->
+<!-- Veg Modal -->
+<div id="vegModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('vegModal')">&times;</span>
+        <h1>Veg Items</h1>
+        <div class="image-gallery">
+            <!-- Dal -->
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/Dal.jpg" alt="Dal">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/Dal.jpg" data-price="80">Dal</h2>
+                        <p style="color: black;">RS.80</p>
+                    </div>
+                    <a href="/login"><button class="order-btn" >Order</button> </a>
+                </div>
+            </div>
+            
+            <!-- Kaju Curry -->
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/kaju Currry.jpg" alt="Kaju Curry">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/kaju Currry.jpg" data-price="160">Kaju Curry</h2>
+                        <p style="color: black;">RS.160</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button></a>               
+                </div>
+            </div>
+
+            <!-- Mixed Fry -->
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/Mixed fry.jpg" alt="Mixed Fry">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/Mixed fry.jpg" data-price="100">Mixed Fry</h2>
+                        <p style="color: black;">RS.100</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button> </a>            
+                 </div>
+            </div>
+
+            <!-- Potato -->
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/Potato.jpg" alt="Potato">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/Potato.jpg" data-price="80">Potato curry</h2>
+                        <p style="color: black;">RS.80</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button</a>         
+                    </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/aloo_gobi.jpeg" alt="aloo_gobi">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/aloo_gobi.jpeg" data-price="90">aloo_gobi</h2>
+                        <p style="color: black;">RS.90</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button>  </a>           
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/bindi_masala.jpeg" alt="bindi_masala">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/bindi_masala.jpeg" data-price="100">bindi_masala</h2>
+                        <p style="color: black;">RS.100</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button></a>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/choole_masala.jpeg" alt="choole_masala">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/choole_masala.jpeg" data-price="90">choole_masala</h2>
+                        <p style="color: black;">RS.90</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button></a>
+                </div>
+            </div>  
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/kadai_paneer.jpeg" alt="kadai_paneer">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/kadai_paneer.jpeg" data-price="140">kadai_paneer</h2>
+                        <p style="color: black;">RS.140</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button></a>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/matar_paneer.jpeg" alt="matar_paneer">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/matar_paneer.jpeg" data-price="130">matar_paneer</h2>
+                        <p style="color: black;">RS.130</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button></a>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/mix_veg_curry.jpeg" alt="mix_veg_curry">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/mix_veg_curry.jpeg" data-price="110">mix_veg_curry</h2>
+                        <p style="color: black;">RS.110</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button</a>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/palak_paneer.jpeg" alt="palak_paneer">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/palak_paneer.jpeg" data-price="130">palak_paneer</h2>
+                        <p style="color: black;">RS.130</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button</a>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/paneer-butter-masala.jpg" alt="paneer-butter-masala">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/paneer-butter-masala.jpg" data-price="150">paneer-butter-masala</h2>
+                        <p style="color: black;">RS.150</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button></a>
+                </div>
+            </div>
+    
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/rajma_curry.jpeg" alt="rajma_curry">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/rajma_curry.jpeg" data-price="90">rajma_curry</h2>
+                        <p style="color: black;">RS.90</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button></a>                
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/stuffed _capsicum.jpeg" alt="stuffed _capsicum">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/stuffed _capsicum.jpeg" data-price="120">stuffed _capsicum</h2>
+                        <p style="color: black;">RS.120</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button></a>
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/veg_Biryani.jpeg" alt="veg_Biryani">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/veg_Biryani.jpeg" data-price="130">veg_Biryani</h2>
+                        <p style="color: black;">RS.130</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button</a>            
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/veg_kofta.jpeg" alt="veg_kofta">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/veg_kofta.jpeg" data-price="130">veg_kofta</h2>
+                        <p style="color: black;">RS.130</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button> </a>             
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/veg_pulao.jpeg" alt="veg_pulao">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/veg_pulao.jpeg" data-price="110">veg_pulao</h2>
+                        <p style="color: black;">RS.110</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button> </a>             
+                </div>
+            </div>
+            <div class="food-item">
+                <div class="venue-box">
+                    <img src="/images/veg/veg_thali.jpeg" alt="veg_thali">
+                    <div class="venue-info">
+                        <h2 class="searchable-item" data-img="/images/veg/veg_thali.jpeg" data-price="220">veg_thali</h2>
+                        <p style="color: black;">RS.220</p>
+                    </div>
+                    <a href="/login"><button class="order-btn">Order</button> </a>             
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+    
+        <!-- Modal for Non-Veg Items -->
+        <div id="nonVegModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('nonVegModal')">&times;</span>
+                <h1>Non-Veg Items</h1>
+                <div class="image-gallery">
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Chicken Dhum.jpg" alt="Chicken Biryani">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Chicken Dhum.jpg" data-price="250">Chicken Biryani</h2>
+                                    <p style="color: black;">RS.250</p>
+                                </div>
+                                <a href="/login"><button class="order-btn">Order</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Fish Biryani.jpg" alt="Fish Biryani">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Fish Biryani.jpg" data-price="220">Fish Biryani</h2>
+                                    <p style="color: black;">RS.220</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button></a>                   
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Egg Biryani.jpg" alt="Egg Biryani">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Egg Biryani.jpg" data-price="150">Egg Biryani</h2>
+                                    <p style="color: black;">RS.150</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button</a>                  
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Mutton Biryani.jpg" alt="Mutton Biryani">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Mutton Biryani.jpg" data-price="270">Mutton Biryani</h2>
+                                    <p style="color: black;">RS.270</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button></a>                
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Butter_chicken.jpeg" alt="Butter_chicken">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Butter_chicken.jpeg" data-price="200">Butter_chicken</h2>
+                                    <p style="color: black;">RS.200</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button>  </a>               
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Chicken 65.jpeg" alt="Chicken 65">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Chicken 65.jpeg" data-price="150">Chicken 65(4 pieces)</h2>
+                                    <p style="color: black;">RS.150</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button></a>             
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/chicken fry.jpg" alt="chicken fry">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/chicken fry.jpg" data-price="150">chicken fry</h2>
+                                    <p style="color: black;">RS.150</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button</a>      
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/leg fry.jpg" alt="leg fry">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/leg fry.jpg" data-price="80">leg fry(1 piece)</h2>
+                                    <p style="color: black;">RS.80</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button>    </a>      
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Chicken Korma.jpeg" alt="Chicken Korma">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Chicken Korma.jpeg" data-price="180">Chicken Korma</h2>
+                                    <p style="color: black;">RS.180</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button></a>              
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Chicken Lollipop.jpeg" alt="Chicken Lollipop">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Chicken Lollipop.jpeg" data-price="140">Chicken Lollipop</h2>
+                                    <p style="color: black;">RS.140</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button> </a>                  
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Chicken Tikka Masala.jpeg" alt="Chicken Tikka Masala">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Chicken Tikka Masala.jpeg" data-price="200">Chicken Tikka Masala</h2>
+                                    <p style="color: black;">RS.200</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Egg Curry.jpeg" alt="Egg Curry">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Egg Curry.jpeg" data-price="100">Egg Curry</h2>
+                                    <p style="color: black;">RS.100</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button> </a>           
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Fish Fry.jpeg" alt="Fish Fry">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Fish Fry.jpeg" data-price="120">Fish Fry(4 pieces)</h2>
+                                    <p style="color: black;">RS.120</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button>  </a>         
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Grilled Chicken.jpeg" alt="Grilled Chicken">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Grilled Chicken.jpeg" data-price="180">Grilled Chicken</h2>
+                                    <p style="color: black;">RS.180</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button> </a>    
+                        </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Keema Curry.jpeg" alt="Keema Curry">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Keema Curry.jpeg" data-price="250">Keema Curry</h2>
+                                    <p style="color: black;">RS.250</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button</a>        
+                       </div>
+                    
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Mutton Rogan Josh.jpeg" alt="Mutton Rogan Josh">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Mutton Rogan Josh.jpeg" data-price="300">Mutton Rogan Josh</h2>
+                                    <p style="color: black;">RS.300</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button> </a>                   
+                    </div>
+                    <div class="food-item">
+                        <div class="venue-list">
+                            <div class="venue-box">
+                                <img src="/images/non_veg/Prawn Masala.jpeg" alt="Prawn Masala">
+                                <div class="venue-info">
+                                    <h2 class="searchable-item" data-img="/images/non_veg/Prawn Masala.jpeg" data-price="200">Prawn Masala</h2>
+                                    <p style="color: black;">RS.200</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/login"><button class="order-btn">Order</button></a>               
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    
+        <!-- Modal for Chinese Items -->
+        <div id="chineseModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('chineseModal')">&times;</span>
+                <h1>Chinese Items</h1>
+                <div class="image-gallery">
+                    <div class="food-item">
+                        <img src="/images/chinnes/Chicken Noodles.jpeg" alt="Chicken Noodles">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Chicken Noodles.jpeg" data-price="150">Chicken Noodles</h2>
+                        <p style="color: black;">RS.150</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Manchurian.jpg" alt="Manchurian">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Manchurian.jpg" data-price="120">Manchurian</h2>
+                        <p style="color: black;">RS.120</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>                  
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Momos.jpg" alt="Momos">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Momos.jpg" data-price="120">Momos(8pieces)</h2>
+                        <p style="color: black;">RS.120</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>        
+                    </div>
+                    
+                    <div class="food-item">
+                        <img src="/images/chinnes/pasta.jpg" alt="Pasta">
+                        <h2 class="searchable-item" data-img="/images/chinnes/pasta.jpg" data-price="130">Pasta</h2>
+                        <p style="color: black;">RS.130</p>
+                        <a href="/login"><button class="order-btn">Order</button> </a>        
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Veg Noodles.jpeg" alt="Veg Noodles">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Veg Noodles.jpeg" data-price="110">Veg Noodles</h2>
+                        <p style="color: black;">RS.110</p>
+                        <a href="/login"><button class="order-btn">Order</button></a> 
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Veg Manchurian.jpeg" alt="Veg Manchurian">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Veg Manchurian.jpeg" data-price="120">Veg Manchurian</h2>
+                        <p style="color: black;">RS.120</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Veg Fried Rice.jpeg" alt="Veg Fried Rice">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Veg Fried Rice.jpeg" data-price="110">Veg Fried Rice</h2>
+                        <p style="color: black;">RS.110</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Spring Rolls.jpeg" alt="Spring Rolls">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Spring Rolls.jpeg" data-price="100">Spring Rolls(4 rolls)</h2>
+                        <p style="color: black;">RS.100</p>
+                        <a href="/login"><button class="order-btn">Order</button> </a>                   
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Schezwan Rice.jpeg" alt="Schezwan Rice">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Schezwan Rice.jpeg" data-price="120">Schezwan Rice</h2>
+                        <p style="color: black;">RS.120</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Hot & Sour Soup.jpeg" alt="Hot & Sour Soup">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Hot & Sour Soup.jpeg" data-price="100">Hot & Sour Soup</h2>
+                        <p style="color: black;">RS.100</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Gobi Manchurian.jpeg" alt="Gobi Manchurian">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Gobi Manchurian.jpeg" data-price="140">Gobi Manchurian</h2>
+                        <p style="color: black;">RS.140</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Garlic Chicken.jpeg" alt="Garlic Chicken">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Garlic Chicken.jpeg" data-price="180">Garlic Chicken</h2>
+                        <p style="color: black;">RS.180</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Dragon Paneer.jpeg" alt="Dragon Paneer">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Dragon Paneer.jpeg" data-price="170">Dragon Paneer</h2>
+                        <p style="color: black;">RS.170</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Chilli Paneer.jpeg" alt="Chilli Paneer">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Chilli Paneer.jpeg" data-price="160">Chilli Paneer</h2>
+                        <p style="color: black;">RS.160</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Chilli Chicken.jpeg" alt="Chilli Chicken">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Chilli Paneer.jpeg" data-price="180  ">Chilli Chicken</h2>
+                        <p style="color: black;">RS.180</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                    <div class="food-item">
+                        <img src="/images/chinnes/Chicken Fried Rice.jpeg" alt="Chicken Fried Rice">
+                        <h2 class="searchable-item" data-img="/images/chinnes/Chicken Fried Rice.jpeg" data-price="150">Chicken Fried Rice</h2>
+                        <p style="color: black;">RS.150</p>
+                        <a href="/login"><button class="order-btn">Order</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <!-- Modal for cool drinks  -->
+    <div id="coolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('coolModal')">&times;</span>
+            <h1>Cool Drinks</h1>
+            <div class="image-gallery">
+                <div class="food-item">
+                    <img src="/images/cool/Badam Milk.jpeg" alt="Badam Milk" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/Badam Milk.jpeg" data-price="50">Badam Milk</h2>
+                    <p style="color: black;">RS.50</p>
+                    <a href="/login"><button class="order-btn">Order</button> </a>           
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/Banana Shake.jpeg" alt="Banana Shake" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/Banana Shake.jpeg" data-price="60">Banana Shake</h2>
+                    <p style="color: black;">RS.60</p>
+                    <a href="/login"><button class="order-btn">Order</button></a>
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/cola.jpeg" alt="Coca-Cola" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/cola.jpeg" data-price="30">Coca-Cola</h2>
+                    <p style="color: black;">RS.30</p>
+                    <a href="/login"><button class="order-btn">Order</button>  </a>          
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/Falooda Drink.jpeg" alt="Falooda Drink" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/Falooda Drink.jpeg" data-price="100">Falooda Drink</h2>
+                    <p style="color: black;">RS.100</p>
+                    <a href="/login"><button class="order-btn">Order</button></a>                
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/Lime Soda.jpeg" alt="Lime Soda" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/Lime Soda.jpeg" data-price="25">Lime Soda</h2>
+                    <p style="color: black;">RS.25</p>
+                    <a href="/login"><button class="order-btn">Order</button>  </a>          
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/Mango Shake.jpeg" alt="Mango Shake" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/Mango Shake.jpeg" data-price="80">Mango Shake</h2>
+                    <p style="color: black;">RS.80</p>
+                    <a href="/login"><button class="order-btn">Order</button></a>              
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/pepsi.jpeg" alt="pepsi" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/pepsi.jpeg" data-price="40">pepsi</h2>
+                    <p style="color: black;">RS.40</p>
+                    <a href="/login"><button class="order-btn">Order</button> </a>  
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/Rose Milk.jpeg" alt="Rose Milk" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/Rose Milk.jpeg" data-price="50">Rose Milk</h2>
+                    <p style="color: black;">RS.50</p>
+                    <a href="/login"><button class="order-btn">Order</button></a>          
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/sprite.jpeg" alt="sprite" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/sprite.jpeg" data-price="45">sprite</h2>
+                    <p style="color: black;">RS.45</p>
+                    <a href="/login"><button class="order-btn">Order</button> </a>    
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/Strawberry Shake.jpeg" alt="Strawberry Shake" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/Strawberry Shake.jpeg" data-price="80">Strawberry Shake</h2>
+                    <p style="color: black;">RS.80</p>
+                    <a href="/login"><button class="order-btn">Order</button></a>
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/Sweet Lassi.jpeg" alt="Sweet Lassi" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/Sweet Lassi.jpeg" data-price="50">Sweet Lassi</h2>
+                    <p style="color: black;">RS.50</p>
+                    <a href="/login"><button class="order-btn">Order</button></a>              
+                </div>
+                <div class="food-item">
+                    <img src="/images/cool/thumsup.jpeg" alt="thumsup" width="150" height="150">
+                    <h2 class="searchable-item" data-img="/images/cool/thumsup.jpeg" data-price="45">thumsup</h2>
+                    <p style="color: black;">RS.45</p>
+                    <a href="/login"><button class="order-btn">Order</button>    </a>      
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    
+<!-- Modal for ice creams  -->
+<div id="icecreamModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('icecreamModal')">&times;</span>
+        <h1>Ice Creams</h1>
+        <div class="image-gallery">
+            <div class="food-item">
+                <img src="/images/ice creams/Vanilla.jpeg" alt="Vanilla" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Vanilla.jpeg" data-price="40">Vanilla</h2>
+                <p style="color: black;">RS.40</p>
+                <a href="/login"><button class="order-btn">Order</button>  </a>  
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Strawberry.jpeg" alt="Strawberry" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Strawberry.jpeg" data-price="50">Strawberry</h2>
+                <p style="color: black;">RS.50</p>
+                <a href="/login"><button class="order-btn">Order</button> </a>       
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Black Currant.jpeg" alt="Black Currant" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Black Currant.jpeg" data-price="60">Black Currant</h2>
+                <p style="color: black;">RS.60</p>
+                <a href="/login"><button class="order-btn">Order</button> </a>          
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Chocolate.jpeg" alt="Chocolate" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Chocolate.jpeg" data-price="50">Chocolate</h2>
+                <p style="color: black;">RS.50</p>
+                <a href="/login"><button class="order-btn">Order</button>  </a>      
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Butterscotch.jpeg" alt="Butterscotch" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Butterscotch.jpeg" data-price="60">Butterscotch</h2>
+                <p style="color: black;">RS.60</p>
+                <a href="/login"><button class="order-btn">Order</button></a>           
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Mango.jpeg" alt="Mango" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Mango.jpeg" data-price="40">Mango</h2>
+                <p style="color: black;">RS.40</p>
+                <a href="/login"><button class="order-btn">Order</button> </a>
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Caramel Swirl.jpeg" alt="Caramel Swirl" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Caramel Swirl.jpeg" data-price="60">Caramel Swirl</h2>
+                <p style="color: black;">RS.60</p>
+                <a href="/login"><button class="order-btn">Order</button></a>
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Choco Chips.jpeg" alt="Choco Chips" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Choco Chips.jpeg" data-price="60">Choco Chips</h2>
+                <p style="color: black;">RS.60</p>
+                <a href="/login"><button class="order-btn">Order</button></a>          
+            </div>
+            
+            <div class="food-item">
+                <img src="/images/ice creams/Ferrero Rocher.jpeg" alt="Ferrero Rocher" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Ferrero Rocher.jpeg" data-price="120">Ferrero Rocher</h2>
+                <p style="color: black;">RS.120</p>
+                <a href="/login"><button class="order-btn">Order</button></a>
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Kesar Pista.jpeg" alt="Kesar Pista" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Kesar Pista.jpeg" data-price="80">Kesar Pista</h2>
+                <p style="color: black;">RS.80</p>
+                <a href="/login"><button class="order-btn">Order</button></a>          
+            </div>
+           
+            <div class="food-item">
+                <img src="/images/ice creams/Mint Choco.jpeg" alt="Mint Choco" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Mint Choco.jpeg" data-price="60">Mint Choco</h2>
+                <p style="color: black;">RS.60</p>
+                <a href="/login"><button class="order-btn">Order</button> </a>        
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Nutty Belgian.jpeg" alt="Nutty Belgian" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Nutty Belgian.jpeg" data-price="250">Nutty Belgian(500ml)</h2>
+                <p style="color: black;">RS.250</p>
+                <a href="/login"><button class="order-btn">Order</button></a>            
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Oreo Crunch.jpeg" alt="Oreo Crunch" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Oreo Crunch.jpeg" data-price="100">Oreo Crunch</h2>
+                <p style="color: black;">RS.100</p>
+                <a href="/login"><button class="order-btn">Order</button</a>         
+            </div>
+            <div class="food-item">
+                <img src="/images/ice creams/Sitaphal (Custard Apple).jpeg" alt="Sitaphal (Custard Apple)" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Sitaphal (Custard Apple).jpeg" data-price="80">Sitaphal (Custard Apple)</h2>
+                <p style="color: black;">RS.80</p>
+                <a href="/login"><button class="order-btn">Order</button></a>
+            </div>
+            
+            <div class="food-item">
+                <img src="/images/ice creams/Tender Coconut.jpeg" alt="Tender Coconut" width="150" height="150">
+                <h2 class="searchable-item" data-img="/images/ice creams/Tender Coconut.jpeg" data-price="70">Tender Coconut</h2>
+                <p style="color: black;">RS.70</p>
+                <a href="/login"><button class="order-btn">Order</button></a>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add("fade-in-left");
+                }, index * 100); // staggered delay
+                obs.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    const foodItems = document.querySelectorAll(".food-item, .food-item, .food-item");
+    foodItems.forEach(item => observer.observe(item));
+});
+</script>
+<script>
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "flex";
+
+    // Animate food/drink/icecream items
+    const items = modal.querySelectorAll(".food-item, .food-item, .food-item");
+    items.forEach((item, index) => {
+        item.classList.remove("fade-in-left"); // reset if previously applied
+        void item.offsetWidth; // trigger reflow
+        setTimeout(() => {
+            item.classList.add("fade-in-left");
+        }, index * 100); // staggered animation
+    });
+}
+   
+    function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "none";
+
+    const items = modal.querySelectorAll(".food-item, .food-item, .food-item");
+    items.forEach(item => {
+        item.classList.remove("fade-in-left");
+    });
+}
+
+    
+    // Close the modal when clicking outside
+    window.onclick = function(event) {
+        let modals = document.querySelectorAll(".modal");
+        modals.forEach((modal) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    };
+</script>
+<script>
+    const searchInput = document.getElementById('searchBox');
+    const resultContainer = document.getElementById('searchResults');
+    const resultItems = document.getElementById('resultItems');
+    const modals = document.querySelectorAll('.modal');
+    function openPaymentModal(itemName, price) {
+        document.getElementById('itemName').value = itemName;
+        document.getElementById('itemPrice').value = price;
+        document.getElementById('quantity').value = 1;
+        calculateTotal();
+        document.getElementById('paymentModal').style.display = 'block';
+    }
+    searchInput.addEventListener('input', function () {
+      const query = this.value.trim().toLowerCase();
+      resultItems.innerHTML = '';
+  
+      if (query === '') {
+        resultContainer.style.display = 'none';
+        return;
+      }
+  
+      resultContainer.style.display = 'block';
+      modals.forEach(modal => modal.style.display = 'none'); // Hide all modals during search
+  
+      const items = document.querySelectorAll('.searchable-item');
+  
+      let found = false;
+  
+      items.forEach(item => {
+        const name = item.textContent.toLowerCase();
+        if (name.includes(query)) {
+          const foodName = item.textContent;
+          const img = item.dataset.img || '';
+          const price = item.dataset.price || 'N/A';
+  
+          const card = document.createElement('div');
+          card.className = "result-card";
+          card.innerHTML = `
+            <img src="${img}" alt="${foodName}">
+            <h3>${foodName}</h3>
+            <p>RS.${price}</p>
+            <a href="/login"><button>Order</button>
+          `;
+
+  
+          resultItems.appendChild(card);
+          found = true;
+        }
+      });
+  
+      if (!found) {
+        resultItems.innerHTML = '<p>No matching food items found.</p>';
+      }
+    });
+  </script>
+</section> 
+
+<!--footer section-->
+    <footer id="contact">
+        <div class="container">
+            <div class="f-container">
+                <h2>Food Service </h2><br>
+                <p> </p>
+                <div>
+                    <p>Our food service offers a seamless and delightful experience for customers looking to enjoy a variety of delicious meals from the comfort of their home. With a wide selection of freshly prepared dishes across multiple categories like Veg, Non-Veg, Chinese, Ice Creams, and Drinks, we ensure there's something for everyone.</p>
+                </div>
+                <div class="social">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-pinterest"></i>
+                </div>
+                
+            </div>
+            <div class="f-container">
+                    <h2>About Us</h2>
+                    <p>Our journey began with a simple mission: to serve happiness on a plate. With a team of passionate chefs and food enthusiasts, we carefully select fresh ingredients, blend them with age-old recipes, and present them with a modern twist.</p>
+                    <h2>Our Love</h2>
+					<p>Our love is built on a foundation of trust, respect, and unwavering support for one another. Together, we've navigated life's ups and downs, always standing by each other's side.
+                    </p>
+            </div>
+                    
+            <div class = "f-container">
+           			<h2>Contact Us</h2><br>
+            		<h2><b>nrk123786@gmail.com</b></h2>
+            		<h2><b>8309607825</b></h2>
+            </div>
+        
+        </div>
+    </footer>
+        
+</body>
+
+
+</html>
